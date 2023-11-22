@@ -1,3 +1,4 @@
+import "../src/assets/css/style.css";
 import "./App.css";
 import Footer from "./component/footer/Footer";
 import Navbar from "./component/navbar/Navbar";

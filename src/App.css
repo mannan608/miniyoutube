@@ -1,7 +1,13 @@
+.wrapper {
+  width: 100%;
+  padding: 0 30px;
+}
+
 .home {
   margin: 0 -12px;
+  row-gap: 24px;
 }
-.col-lg-3 {
+.home .col-lg-3 {
   padding: 0 12px;
 }
 
@@ -18,8 +24,17 @@
   border: 0;
   cursor: pointer;
 }
-.author img {
+.card .card-body img {
   width: 60px;
   height: 60px;
   border-radius: 50%;
+}
+.card-title {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.author p {
+  font-size: 14px;
 }
