@@ -8,21 +8,27 @@ const VideoItems = () => {
   const { videos, isLoading, isError, error } = useSelector(
     (state) => state.videos
   );
-
   const { tags, search } = useSelector((state) => state.filter);
+
   useEffect(() => {
     dispatch(fetchVideos({ tags, search }));
   }, [dispatch, tags, search]);
+
+  // decide what to render
   let content;
+
   if (isLoading) {
     content = <p>Loading</p>;
   }
+
   if (!isLoading && isError) {
     content = <p>{error}</p>;
   }
+
   if (!isLoading && !isError && videos?.length === 0) {
     content = <p>No Video Found</p>;
   }
+
   if (!isLoading && !isError && videos?.length > 0) {
     content = videos.map((video) => (
       <SingleVideo key={video.id} video={video} />

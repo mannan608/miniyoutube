@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+const { createSlice } = require("@reduxjs/toolkit");
 
 const initialState = {
   tags: [],
@@ -6,14 +6,15 @@ const initialState = {
 };
 
 const filterSlice = createSlice({
-  name: "filtervideo",
+  name: "video",
   initialState,
   reducers: {
     tagSelected: (state, action) => {
       state.tags.push(action.payload);
     },
-    tagRemove: (state, action) => {
+    tagRemoved: (state, action) => {
       const indexToRemove = state.tags.indexOf(action.payload);
+
       if (indexToRemove !== -1) {
         state.tags.splice(indexToRemove, 1);
       }
@@ -25,4 +26,4 @@ const filterSlice = createSlice({
 });
 
 export default filterSlice.reducer;
-export const { tagSelected, tagRemove, searched } = filterSlice.actions;
+export const { tagSelected, tagRemoved, searched } = filterSlice.actions;

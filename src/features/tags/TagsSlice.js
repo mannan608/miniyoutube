@@ -1,5 +1,5 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { getTags } from "./TagsApi";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   tags: [],
@@ -8,13 +8,14 @@ const initialState = {
   error: "",
 };
 
-export const fetchTags = createAsyncThunk("videos/fetchTags", async () => {
+// async thunk
+export const fetchTags = createAsyncThunk("tags/fetchTags", async () => {
   const tags = await getTags();
   return tags;
 });
 
-const TagsSlice = createSlice({
-  name: "videos",
+const tagsSlice = createSlice({
+  name: "tags",
   initialState,
   extraReducers: (builder) => {
     builder
@@ -35,4 +36,4 @@ const TagsSlice = createSlice({
   },
 });
 
-export default TagsSlice.reducer;
+export default tagsSlice.reducer;

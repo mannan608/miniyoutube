@@ -1,5 +1,5 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { getVideo } from "./VideoApi";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   video: {},
@@ -8,12 +8,13 @@ const initialState = {
   error: "",
 };
 
+// async thunk
 export const fetchVideo = createAsyncThunk("video/fetchVideo", async (id) => {
   const video = await getVideo(id);
   return video;
 });
 
-const VideoSlice = createSlice({
+const videoSlice = createSlice({
   name: "video",
   initialState,
   extraReducers: (builder) => {
@@ -35,4 +36,4 @@ const VideoSlice = createSlice({
   },
 });
 
-export default VideoSlice.reducer;
+export default videoSlice.reducer;

@@ -1,6 +1,7 @@
-import axiosInstance from "../../utilities/axios";
+import axios from "../../utilities/axios";
 
 export const getTags = async () => {
-  const response = await axiosInstance.get("/tags");
+  const response = await axios.get("/tags");
+
   return response.data;
 };

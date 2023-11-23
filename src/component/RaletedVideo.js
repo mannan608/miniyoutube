@@ -3,16 +3,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchRelatedVideos } from "../features/relatedvideos/RelatedVideosSlice";
 import SingleRelatedVideo from "./SingleRelatedVideo";
 
-const RaletedVideo = ({ currentvideoid, tags }) => {
+const RaletedVideo = ({ currentVideoId, tags }) => {
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(fetchRelatedVideos({ tags, id: currentvideoid }));
-  }, [dispatch, tags, currentvideoid]);
-
-  const { relatedvideos, isLoading, isError, error } = useSelector(
+  const { relatedVideos, isLoading, isError, error } = useSelector(
     (state) => state.relatedvideos
   );
+
+  useEffect(() => {
+    dispatch(fetchRelatedVideos({ tags, id: currentVideoId }));
+  }, [dispatch, tags, currentVideoId]);
 
   let content = null;
   if (isLoading) {
@@ -21,16 +20,19 @@ const RaletedVideo = ({ currentvideoid, tags }) => {
   if (!isLoading && isError) {
     content = <p>{error}</p>;
   }
-  if (!isLoading && !isError && relatedvideos?.length === 0) {
+  if (!isLoading && !isError && relatedVideos?.length === 0) {
     content = <p>No Video Found</p>;
   }
-  if (!isLoading && !isError && relatedvideos?.length > 0) {
-    content = relatedvideos.map((video) => (
+  if (!isLoading && !isError && relatedVideos?.length > 0) {
+    content = relatedVideos.map((video) => (
       <SingleRelatedVideo key={video.id} video={video} />
     ));
   }
 
   return <div className="d-flex flex-column gap-4">{content}</div>;
+  // {relatedVideos.map((video) => {
+  //   return <SingleRelatedVideo key={video.id} video={video} />;
+  // })}
 };
 
 export default RaletedVideo;

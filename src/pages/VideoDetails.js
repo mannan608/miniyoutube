@@ -11,12 +11,13 @@ const VideoDetails = () => {
   const { video, isLoading, isError, error } = useSelector(
     (state) => state.video
   );
-  const { id, link, title, tags } = video || {};
   const dispatch = useDispatch();
   const { videoId } = useParams();
+
   useEffect(() => {
     dispatch(fetchVideo(videoId));
   }, [dispatch, videoId]);
+  const { id, link, title, tags } = video || {};
 
   let content = null;
   if (isLoading) {
@@ -38,7 +39,7 @@ const VideoDetails = () => {
           </div>
         </div>
         <div className="col-4">
-          <RaletedVideo currentvideoid={id} tags={tags} />
+          <RaletedVideo currentVideoId={id} tags={tags} />
         </div>
       </div>
     );

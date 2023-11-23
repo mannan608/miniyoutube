@@ -1,11 +1,12 @@
-import Tag from "./Tag";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchTags } from "../../features/tags/TagsSlice";
+import Tag from "./Tag";
 
 const TagItems = () => {
   const dispatch = useDispatch();
   const { tags } = useSelector((state) => state.tags);
+
   useEffect(() => {
     dispatch(fetchTags());
   }, [dispatch]);

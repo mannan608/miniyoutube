@@ -1,8 +1,7 @@
-import React from "react";
 import { Link } from "react-router-dom";
 
-const SingleVideo = ({ video }) => {
-  const { id, title, author, avatar, views, thumbnail, date } = video || {};
+const SingleVideo = ({ video = {} }) => {
+  const { id, title, author, avatar, views, thumbnail, date } = video;
   return (
     <div className="col-lg-3 col-md-4">
       <Link to={`videos/${id}`}>
